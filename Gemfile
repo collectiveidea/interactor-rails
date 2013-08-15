@@ -1,4 +1,8 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-# Specify your gem's dependencies in interactor-rails.gemspec
 gemspec
+
+group :test do
+  gem "coveralls", "~> 0.6.7", require: false
+  gem "rspec", "~> 2.14"
+end
