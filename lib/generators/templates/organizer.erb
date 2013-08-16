@@ -1,0 +1,9 @@
+class <%= class_name %>
+  include Interactor::Organizer
+
+<%- if interactors.any? -%>
+  organize <%= interactors.map(&:classify).join(", ") %>
+<%- else -%>
+  # organize Interactor1, Interactor2
+<%- end -%>
+end
