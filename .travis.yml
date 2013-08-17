@@ -1,6 +1,11 @@
 branches:
   only:
     - master
+gemfile:
+  - gemfiles/rails30.gemfile
+  - gemfiles/rails31.gemfile
+  - gemfiles/rails32.gemfile
+  - gemfiles/rails40.gemfile
 language: ruby
 rvm:
   - 1.9.3
