@@ -92,6 +92,10 @@ EOF
       end
     end
 
-    it "adds app/interactors to autoload_paths"
+    it "auto-loads interactors" do
+      run_simple "bundle exec rails generate interactor place_order"
+
+      run_simple "bundle exec rails runner PlaceOrder"
+    end
   end
 end
