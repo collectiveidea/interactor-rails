@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Interactor
-  describe Rails do
+  describe "Rails" do
     before do
       run_simple <<-CMD
         bundle exec rails new example \
