@@ -6,6 +6,5 @@ RSpec.configure do |config|
   config.before do
     @aruba_timeout_seconds = 60
     FileUtils.rm_rf(current_dir)
-    unset_bundler_env_vars
   end
 end
