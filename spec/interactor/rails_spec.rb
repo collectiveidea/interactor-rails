@@ -97,5 +97,11 @@ EOF
 
       run_simple "bundle exec rails runner PlaceOrder"
     end
+
+    it "auto-loads organizers" do
+      run_simple "bundle exec rails generate interactor:organizer place_order"
+
+      run_simple "bundle exec rails runner PlaceOrder"
+    end
   end
 end
