@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Interactor
-  describe Rails do
+  describe "Rails" do
     before do
       run_simple <<-CMD
         bundle exec rails new example \
@@ -94,6 +94,12 @@ EOF
 
     it "auto-loads interactors" do
       run_simple "bundle exec rails generate interactor place_order"
+
+      run_simple "bundle exec rails runner PlaceOrder"
+    end
+
+    it "auto-loads organizers" do
+      run_simple "bundle exec rails generate interactor:organizer place_order"
 
       run_simple "bundle exec rails runner PlaceOrder"
     end
