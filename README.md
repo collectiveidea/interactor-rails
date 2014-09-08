@@ -14,7 +14,7 @@ Interactor Rails provides Rails support for the
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "interactor-rails", "~> 1.0"
+gem "interactor-rails", "~> 2.0"
 ```
 
 Interactor Rails is compatible with Ruby 1.9 or 2.0 on Rails 3 or 4.

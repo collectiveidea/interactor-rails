@@ -34,7 +34,7 @@ module Interactor
 class PlaceOrder
   include Interactor
 
-  def perform
+  def call
     # TODO
   end
 end
