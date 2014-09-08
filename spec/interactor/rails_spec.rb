@@ -47,6 +47,22 @@ EOF
           check_file_presence(["app/interactors/place_order.rb"], false)
           assert_partial_output("rails generate interactor NAME", all_stdout)
         end
+
+        it "handles namespacing" do
+          run_simple "bundle exec rails generate interactor invoice/place_order"
+
+          path = "app/interactors/invoice/place_order.rb"
+          check_file_presence([path], true)
+          check_exact_file_content(path, <<-EOF)
+class Invoice::PlaceOrder
+  include Interactor
+
+  def call
+    # TODO
+  end
+end
+EOF
+        end
       end
 
       context "interactor:organizer" do
@@ -88,6 +104,20 @@ EOF
 
           check_file_presence(["app/interactors/place_order.rb"], false)
           assert_partial_output("rails generate interactor:organizer NAME", all_stdout)
+        end
+
+        it "handles namespacing" do
+          run_simple "bundle exec rails generate interactor:organizer invoice/place_order"
+
+          path = "app/interactors/invoice/place_order.rb"
+          check_file_presence([path], true)
+          check_exact_file_content(path, <<-EOF)
+class Invoice::PlaceOrder
+  include Interactor::Organizer
+
+  # organize Interactor1, Interactor2
+end
+EOF
         end
       end
     end
