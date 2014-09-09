@@ -17,7 +17,7 @@ Add this line to your application's Gemfile:
 gem "interactor-rails", "~> 2.0"
 ```
 
-Interactor Rails is compatible with Ruby 1.9 or 2.0 on Rails 3 or 4.
+Interactor Rails is compatible with Ruby 1.9, 2.0 or 2.1 on Rails 3 or 4.
 
 ## Usage
 
@@ -34,7 +34,7 @@ adds to `app/interactors/authenticate_user.rb`:
 class AuthenticateUser
   include Interactor
 
-  def perform
+  def call
     # TODO
   end
 end
@@ -56,25 +56,15 @@ class PlaceOrder
 end
 ```
 
-## Contributing
+## Contributions
 
-Interactor is open source and contributions from the community are encouraged!
-No contribution is too small. Please consider:
+Interactor Rails is open source and contributions from the community are
+encouraged! No contribution is too small.
 
-* adding an awesome feature
-* fixing a terrible bug
-* updating documentation
-* fixing a not-so-bad bug
-* fixing typos
+See Interactor Rails'
+[contribution guidelines](CONTRIBUTING.md) for more information.
 
-For the best chance of having your changes merged, please:
-
-1. Ask us! We'd love to hear what you're up to.
-2. Fork the project.
-3. Commit your changes and tests (if applicable (they're applicable)).
-4. Submit a pull request with a thorough explanation and at least one animated GIF.
-
-## Thanks
+## Thank You!
 
 A very special thank you to [Attila Domokos](https://github.com/adomokos) for
 his fantastic work on [LightService](https://github.com/adomokos/light-service).
