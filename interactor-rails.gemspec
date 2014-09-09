@@ -11,9 +11,8 @@ Gem::Specification.new do |spec|
   spec.homepage    = "https://github.com/collectiveidea/interactor-rails"
   spec.license     = "MIT"
 
-  spec.files         = `git ls-files`.split($/)
-  spec.test_files    = spec.files.grep(/^spec/)
-  spec.require_paths = ["lib"]
+  spec.files      = `git ls-files`.split($/)
+  spec.test_files = spec.files.grep(/^spec/)
 
   spec.add_dependency "interactor", "~> 3.0"
   spec.add_dependency "rails", ">= 3", "< 5"
