@@ -1,5 +1,3 @@
-require "spec_helper"
-
 module Interactor
   describe "Rails" do
     before do
