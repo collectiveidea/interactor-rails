@@ -1,10 +1,10 @@
 # Interactor Rails
 
-[![Gem Version](https://badge.fury.io/rb/interactor-rails.png)](http://badge.fury.io/rb/interactor-rails)
-[![Build Status](https://travis-ci.org/collectiveidea/interactor-rails.png?branch=master)](https://travis-ci.org/collectiveidea/interactor-rails)
-[![Code Climate](https://codeclimate.com/github/collectiveidea/interactor-rails.png)](https://codeclimate.com/github/collectiveidea/interactor-rails)
-[![Coverage Status](https://coveralls.io/repos/collectiveidea/interactor-rails/badge.png?branch=master)](https://coveralls.io/r/collectiveidea/interactor-rails?branch=master)
-[![Dependency Status](https://gemnasium.com/collectiveidea/interactor-rails.png)](https://gemnasium.com/collectiveidea/interactor-rails)
+[![Gem Version](https://img.shields.io/gem/v/interactor-rails.svg?style=flat-square)](http://rubygems.org/gems/interactor-rails)
+[![Build Status](https://img.shields.io/travis/collectiveidea/interactor-rails/master.svg?style=flat-square)](https://travis-ci.org/collectiveidea/interactor-rails)
+[![Code Climate](https://img.shields.io/codeclimate/github/collectiveidea/interactor-rails.svg?style=flat-square)](https://codeclimate.com/github/collectiveidea/interactor-rails)
+[![Test Coverage](http://img.shields.io/codeclimate/coverage/github/collectiveidea/interactor-rails.svg?style=flat-square)](https://codeclimate.com/github/collectiveidea/interactor-rails)
+[![Dependency Status](https://img.shields.io/gemnasium/collectiveidea/interactor-rails.svg?style=flat-square)](https://gemnasium.com/collectiveidea/interactor-rails)
 
 Interactor Rails provides Rails support for the
 [Interactor](https://github.com/collectiveidea/interactor) gem.
