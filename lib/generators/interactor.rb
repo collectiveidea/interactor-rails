@@ -6,6 +6,7 @@ module Interactor
 
     def generate
       template "#{self.class.generator_name}.erb", File.join("app/interactors", class_path, "#{file_name}.rb")
+      template "spec.erb", File.join("spec/interactors", class_path, "#{file_name}_spec.rb")
     end
   end
 end

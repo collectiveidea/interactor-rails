@@ -28,7 +28,7 @@ module Interactor
 
     context "rails generate" do
       context "interactor" do
-        it "generates an interactor" do
+        it "generates an interactor and spec" do
           run_simple "bundle exec rails generate interactor place_order"
 
           path = "app/interactors/place_order.rb"
@@ -39,6 +39,18 @@ class PlaceOrder
 
   def call
     # TODO
+  end
+end
+EOF
+
+          path = 'spec/interactors/place_order_spec.rb'
+          expect(path).to be_an_existing_file
+          expect(path).to have_file_content(<<-EOF)
+require 'spec_helper'
+
+RSpec.describe PlaceOrder, type: :interactor do
+  describe '.call' do
+    pending "add some examples to (or delete) \#{__FILE__}"
   end
 end
 EOF
@@ -65,6 +77,18 @@ class Invoice::PlaceOrder
   end
 end
 EOF
+
+          path = "spec/interactors/invoice/place_order_spec.rb"
+          expect(path).to be_an_existing_file
+          expect(path).to have_file_content(<<-EOF)
+require 'spec_helper'
+
+RSpec.describe Invoice::PlaceOrder, type: :interactor do
+  describe '.call' do
+    pending "add some examples to (or delete) \#{__FILE__}"
+  end
+end
+EOF
         end
       end
 
@@ -81,6 +105,18 @@ class PlaceOrder
   include Interactor::Organizer
 
   # organize Interactor1, Interactor2
+end
+EOF
+
+          path = "spec/interactors/place_order_spec.rb"
+          expect(path).to be_an_existing_file
+          expect(path).to have_file_content(<<-EOF)
+require 'spec_helper'
+
+RSpec.describe PlaceOrder, type: :interactor do
+  describe '.call' do
+    pending "add some examples to (or delete) \#{__FILE__}"
+  end
 end
 EOF
         end
@@ -119,6 +155,18 @@ class Invoice::PlaceOrder
   include Interactor::Organizer
 
   # organize Interactor1, Interactor2
+end
+EOF
+
+          path = "spec/interactors/invoice/place_order_spec.rb"
+          expect(path).to be_an_existing_file
+          expect(path).to have_file_content(<<-EOF)
+require 'spec_helper'
+
+RSpec.describe Invoice::PlaceOrder, type: :interactor do
+  describe '.call' do
+    pending "add some examples to (or delete) \#{__FILE__}"
+  end
 end
 EOF
         end
