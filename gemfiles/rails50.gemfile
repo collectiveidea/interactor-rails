@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
-gemspec
+gemspec path: ".."
 
-gem "rails", "~> 4.2.0"
+gem "rails", ">= 5.0.0.beta3", "< 5.1"
 
 group :test do
   gem "aruba", "~> 0.6.1"
