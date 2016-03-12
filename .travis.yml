@@ -3,6 +3,7 @@ before_install:
 branches:
   only:
     - master
+cache: bundler
 env:
   global:
     - secure: | # CODECLIMATE_REPO_TOKEN
@@ -15,13 +16,22 @@ gemfile:
   - gemfiles/rails32.gemfile
   - gemfiles/rails40.gemfile
   - gemfiles/rails41.gemfile
+  - gemfiles/rails42.gemfile
 language: ruby
 matrix:
   allow_failures:
     - rvm: ruby-head
+  include:
+    - rvm: 2.2.2
+      gemfile: gemfiles/rails50.gemfile
+    - rvm: 2.3.0
+      gemfile: gemfiles/rails50.gemfile
 rvm:
   - 1.9.3
   - "2.0"
   - "2.1"
+  - 2.2.2
+  - 2.3.0
   - ruby-head
 script: bundle exec rspec
+sudo: false

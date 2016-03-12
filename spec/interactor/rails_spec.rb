@@ -28,7 +28,7 @@ module Interactor
 
           path = "app/interactors/place_order.rb"
           check_file_presence([path], true)
-          check_exact_file_content(path, <<-EOF)
+          check_file_content(path, <<-EOF)
 class PlaceOrder
   include Interactor
 
@@ -51,7 +51,7 @@ EOF
 
           path = "app/interactors/invoice/place_order.rb"
           check_file_presence([path], true)
-          check_exact_file_content(path, <<-EOF)
+          check_file_content(path, <<-EOF)
 class Invoice::PlaceOrder
   include Interactor
 
@@ -71,7 +71,7 @@ EOF
 
           path = "app/interactors/place_order.rb"
           check_file_presence([path], true)
-          check_exact_file_content(path, <<-EOF)
+          check_file_content(path, <<-EOF)
 class PlaceOrder
   include Interactor::Organizer
 
@@ -88,7 +88,7 @@ EOF
 
           path = "app/interactors/place_order.rb"
           check_file_presence([path], true)
-          check_exact_file_content(path, <<-EOF)
+          check_file_content(path, <<-EOF)
 class PlaceOrder
   include Interactor::Organizer
 
@@ -109,7 +109,7 @@ EOF
 
           path = "app/interactors/invoice/place_order.rb"
           check_file_presence([path], true)
-          check_exact_file_content(path, <<-EOF)
+          check_file_content(path, <<-EOF)
 class Invoice::PlaceOrder
   include Interactor::Organizer
 
