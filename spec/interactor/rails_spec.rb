@@ -1,5 +1,10 @@
 module Interactor
   describe "Rails" do
+    def last_command_started
+      # Account for older versions of Aruba as required by Rails 3.0
+      Aruba::Api.method_defined?(:last_command_started) ? super : last_command
+    end
+
     before do
       run_simple <<-CMD
         bundle exec rails new example \
@@ -43,7 +48,7 @@ EOF
           run_simple "bundle exec rails generate interactor"
 
           expect("app/interactors/place_order.rb").not_to be_an_existing_file
-          expect(last_command_started).to have_output_on_stdout(/rails generate interactor NAME/)
+          expect(last_command_started.stdout).to include("rails generate interactor NAME")
         end
 
         it "handles namespacing" do
@@ -101,7 +106,7 @@ EOF
           run_simple "bundle exec rails generate interactor:organizer"
 
           expect("app/interactors/place_order.rb").not_to be_an_existing_file
-          expect(last_command_started).to have_output_on_stdout(/rails generate interactor:organizer NAME/)
+          expect(last_command_started.stdout).to include("rails generate interactor:organizer NAME")
         end
 
         it "handles namespacing" do
