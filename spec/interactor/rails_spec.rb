@@ -27,8 +27,8 @@ module Interactor
           run_simple "bundle exec rails generate interactor place_order"
 
           path = "app/interactors/place_order.rb"
-          check_file_presence([path], true)
-          check_file_content(path, <<-EOF)
+          expect(path).to be_an_existing_file
+          expect(path).to have_file_content(<<-EOF)
 class PlaceOrder
   include Interactor
 
@@ -42,16 +42,16 @@ EOF
         it "requires a name" do
           run_simple "bundle exec rails generate interactor"
 
-          check_file_presence(["app/interactors/place_order.rb"], false)
-          assert_partial_output("rails generate interactor NAME", all_stdout)
+          expect("app/interactors/place_order.rb").not_to be_an_existing_file
+          expect(last_command_started).to have_output_on_stdout(/rails generate interactor NAME/)
         end
 
         it "handles namespacing" do
           run_simple "bundle exec rails generate interactor invoice/place_order"
 
           path = "app/interactors/invoice/place_order.rb"
-          check_file_presence([path], true)
-          check_file_content(path, <<-EOF)
+          expect(path).to be_an_existing_file
+          expect(path).to have_file_content(<<-EOF)
 class Invoice::PlaceOrder
   include Interactor
 
@@ -70,8 +70,8 @@ EOF
             CMD
 
           path = "app/interactors/place_order.rb"
-          check_file_presence([path], true)
-          check_file_content(path, <<-EOF)
+          expect(path).to be_an_existing_file
+          expect(path).to have_file_content(<<-EOF)
 class PlaceOrder
   include Interactor::Organizer
 
@@ -87,8 +87,8 @@ EOF
             CMD
 
           path = "app/interactors/place_order.rb"
-          check_file_presence([path], true)
-          check_file_content(path, <<-EOF)
+          expect(path).to be_an_existing_file
+          expect(path).to have_file_content(<<-EOF)
 class PlaceOrder
   include Interactor::Organizer
 
@@ -100,16 +100,16 @@ EOF
         it "requires a name" do
           run_simple "bundle exec rails generate interactor:organizer"
 
-          check_file_presence(["app/interactors/place_order.rb"], false)
-          assert_partial_output("rails generate interactor:organizer NAME", all_stdout)
+          expect("app/interactors/place_order.rb").not_to be_an_existing_file
+          expect(last_command_started).to have_output_on_stdout(/rails generate interactor:organizer NAME/)
         end
 
         it "handles namespacing" do
           run_simple "bundle exec rails generate interactor:organizer invoice/place_order"
 
           path = "app/interactors/invoice/place_order.rb"
-          check_file_presence([path], true)
-          check_file_content(path, <<-EOF)
+          expect(path).to be_an_existing_file
+          expect(path).to have_file_content(<<-EOF)
 class Invoice::PlaceOrder
   include Interactor::Organizer
 

@@ -1,10 +1,13 @@
 require "aruba/api"
 
+Aruba.configure do |config|
+  config.exit_timeout = 60
+end
+
 RSpec.configure do |config|
   config.include(Aruba::Api)
 
   config.before do
-    @aruba_timeout_seconds = 60
-    FileUtils.rm_rf(current_dir)
+    setup_aruba
   end
 end
