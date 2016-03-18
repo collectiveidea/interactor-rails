@@ -1,3 +1,8 @@
+## 2.0.2 / 2016-03-18
+
+* [ENHANCEMENT] Add support for Ruby versions 2.1, 2.2, and 2.3
+* [ENHANCEMENT] Add support for Rails versions 4.1, 4.2, and 5.0 (beta)
+
 ## 2.0.1 / 2014-09-08
 
 * [BUGFIX] Generate nested directories for generated namespaced interactors
