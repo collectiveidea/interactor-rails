@@ -26,6 +26,11 @@ matrix:
       gemfile: gemfiles/rails50.gemfile
     - rvm: 2.3.0
       gemfile: gemfiles/rails50.gemfile
+notifications:
+  webhooks:
+    on_start: always
+    urls:
+      - https://buildlight.collectiveidea.com/
 rvm:
   - 1.9.3
   - "2.0"
