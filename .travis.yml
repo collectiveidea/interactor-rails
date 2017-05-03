@@ -30,7 +30,7 @@ notifications:
   webhooks:
     on_start: always
     urls:
-      - http://buildlight.collectiveidea.com/
+      - https://buildlight.collectiveidea.com/
 rvm:
   - 1.9.3
   - "2.0"
