@@ -1,3 +1,11 @@
+## 2.1.0 / 2017-05-09
+
+* [FEATURE] Add spec templates
+* [ENHANCEMENT] Add support for Ruby 2.4
+* [ENHANCEMENT] Drop support for EOL Ruby versions 1.9.3, 2.0, and 2.1
+* [ENHANCEMENT] Add support for Rails 5.1
+* [ENHANCEMENT] Drop support for EOL Rails versions 3.0, 3.1, 3.2, 4.0, and 4.1
+
 ## 2.0.2 / 2016-03-18
 
 * [ENHANCEMENT] Add support for Ruby versions 2.1, 2.2, and 2.3
