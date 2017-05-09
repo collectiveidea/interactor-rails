@@ -8,14 +8,24 @@ module Interactor
     before do
       run_simple <<-CMD
         bundle exec rails new example \
+          --skip-yarn \
           --skip-gemfile \
-          --skip-bundle \
           --skip-git \
           --skip-keeps \
+          --skip-action-mailer \
           --skip-active-record \
+          --skip-puma \
+          --skip-action-cable \
           --skip-sprockets \
+          --skip-spring \
+          --skip-listen \
+          --skip-coffee \
           --skip-javascript \
+          --skip-turbolinks \
           --skip-test-unit \
+          --skip-test \
+          --skip-system-test \
+          --skip-bundle \
           --quiet
         CMD
       cd "example"
