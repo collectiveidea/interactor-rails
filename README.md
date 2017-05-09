@@ -17,7 +17,7 @@ Add this line to your application's Gemfile:
 gem "interactor-rails", "~> 2.0"
 ```
 
-Interactor Rails is compatible with Ruby 1.9.3, 2.0, 2.1, 2.2, or 2.3 on Rails
+Interactor Rails is compatible with Ruby 2.2, 2.3, or 2.4 on Rails
 3, 4, or 5.
 
 ## Usage
