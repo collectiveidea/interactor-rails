@@ -1,3 +1,7 @@
+## 2.1.1 / 2017-05-09
+
+* [BUGFIX] Properly constrain the gemspec's Rails version requirement
+
 ## 2.1.0 / 2017-05-09
 
 * [FEATURE] Add spec templates
