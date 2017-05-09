@@ -26,5 +26,5 @@ rvm:
   - 2.3.4
   - 2.4.1
   - ruby-head
-script: bundle exec rspec
+script: bundle exec rspec --format=documentation
 sudo: false
