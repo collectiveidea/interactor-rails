@@ -3,12 +3,6 @@ before_install:
 branches:
   only:
     - master
-env:
-  global:
-    - secure: | # CODECLIMATE_REPO_TOKEN
-        LANA2wEG+eJ4a+Sl0Uhw343XutMp00m/+IV4n7T+AYpFmzmBPB8k5kVP1SZR
-        lhqpkdWuJlpaSUyP1EvODyS3Ryg+UtCXXKa0vX6AQseYZqMzXoWWWS1UPHx5
-        R5/Dvko4JIPfOeeXwyPGnBhzewdQSqXcQR5UnPIWPG7jvfoCd/Q=
 gemfile:
   - gemfiles/rails30.gemfile
   - gemfiles/rails31.gemfile
