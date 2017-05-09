@@ -4,18 +4,15 @@ branches:
   only:
     - master
 gemfile:
-  - gemfiles/rails30.gemfile
-  - gemfiles/rails31.gemfile
-  - gemfiles/rails32.gemfile
-  - gemfiles/rails40.gemfile
-  - gemfiles/rails41.gemfile
   - gemfiles/rails42.gemfile
   - gemfiles/rails50.gemfile
   - gemfiles/rails51.gemfile
+  - gemfiles/rails51+.gemfile
 language: ruby
 matrix:
   allow_failures:
     - rvm: ruby-head
+    - gemfile: gemfiles/rails51+.gemfile
 notifications:
   webhooks:
     on_start: always

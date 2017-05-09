@@ -18,7 +18,7 @@ gem "interactor-rails", "~> 2.0"
 ```
 
 Interactor Rails is compatible with Ruby 2.2, 2.3, or 2.4 on Rails
-3, 4, or 5.
+4.2, 5.0, or 5.1.
 
 ## Usage
 
