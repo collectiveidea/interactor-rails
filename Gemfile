@@ -6,6 +6,6 @@ gem "rails"
 
 group :test do
   gem "aruba"
-  gem "codeclimate-test-reporter", require: false
+  gem "codeclimate-test-reporter", "~> 1.0"
   gem "rspec"
 end
