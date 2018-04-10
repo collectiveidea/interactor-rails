@@ -26,6 +26,7 @@ module Interactor
           --skip-test \
           --skip-system-test \
           --skip-bundle \
+          --skip-bootsnap \
           --quiet
         CMD
       cd "example"
