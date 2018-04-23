@@ -1,3 +1,9 @@
+## 2.2.0 / 2018-04-23
+
+* [ENHANCEMENT] Add support for Ruby 2.5
+* [ENHANCEMENT] Drop support for EOL Ruby version 2.2
+* [ENHANCEMENT] Add support for Rails 5.2
+
 ## 2.1.1 / 2017-05-09
 
 * [BUGFIX] Properly constrain the gemspec's Rails version requirement
