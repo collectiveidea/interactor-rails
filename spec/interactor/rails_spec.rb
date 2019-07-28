@@ -57,7 +57,7 @@ EOF
           path = 'spec/interactors/place_order_spec.rb'
           expect(path).to be_an_existing_file
           expect(path).to have_file_content(<<-EOF)
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe PlaceOrder, type: :interactor do
   describe '.call' do
@@ -92,7 +92,7 @@ EOF
           path = "spec/interactors/invoice/place_order_spec.rb"
           expect(path).to be_an_existing_file
           expect(path).to have_file_content(<<-EOF)
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Invoice::PlaceOrder, type: :interactor do
   describe '.call' do
@@ -122,7 +122,7 @@ EOF
           path = "spec/interactors/place_order_spec.rb"
           expect(path).to be_an_existing_file
           expect(path).to have_file_content(<<-EOF)
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe PlaceOrder, type: :interactor do
   describe '.call' do
@@ -172,7 +172,7 @@ EOF
           path = "spec/interactors/invoice/place_order_spec.rb"
           expect(path).to be_an_existing_file
           expect(path).to have_file_content(<<-EOF)
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Invoice::PlaceOrder, type: :interactor do
   describe '.call' do
