@@ -26,6 +26,10 @@ matrix:
     - rvm: "2.5"
       gemfile: gemfiles/rails42.gemfile
 
+    # Test Rails master against the latest stable version of Ruby
+    - rvm: "ruby"
+      gemfile: gemfiles/rails-master.gemfile
+
   exclude:
     - rvm: "2.3"
       gemfile: Gemfile
@@ -37,6 +41,7 @@ matrix:
       gemfile: gemfiles/rails60.gemfile
   allow_failures:
     - rvm: ruby-head
+    - gemfile: gemfiles/rails-master.gemfile
 
 before_install:
   # Use bundler 1.x with Rails 4.2
