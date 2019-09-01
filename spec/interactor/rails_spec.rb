@@ -6,7 +6,7 @@ module Interactor
     end
 
     before do
-      run_simple <<-CMD
+      run_command_and_stop <<-CMD
         bundle exec rails new example \
           --skip-yarn \
           --skip-gemfile \
@@ -34,13 +34,13 @@ module Interactor
         gem "rails"
         gem "interactor-rails", path: "#{ROOT}"
         EOF
-      run_simple "bundle install"
+      run_command_and_stop "bundle install"
     end
 
     context "rails generate" do
       context "interactor" do
         it "generates an interactor and spec" do
-          run_simple "bundle exec rails generate interactor place_order"
+          run_command_and_stop "bundle exec rails generate interactor place_order"
 
           path = "app/interactors/place_order.rb"
           expect(path).to be_an_existing_file
@@ -68,14 +68,14 @@ EOF
         end
 
         it "requires a name" do
-          run_simple "bundle exec rails generate interactor"
+          run_command_and_stop "bundle exec rails generate interactor"
 
           expect("app/interactors/place_order.rb").not_to be_an_existing_file
           expect(last_command_started.stdout).to include("rails generate interactor NAME")
         end
 
         it "handles namespacing" do
-          run_simple "bundle exec rails generate interactor invoice/place_order"
+          run_command_and_stop "bundle exec rails generate interactor invoice/place_order"
 
           path = "app/interactors/invoice/place_order.rb"
           expect(path).to be_an_existing_file
@@ -105,7 +105,7 @@ EOF
 
       context "interactor:organizer" do
         it "generates an organizer" do
-          run_simple <<-CMD
+          run_command_and_stop <<-CMD
             bundle exec rails generate interactor:organizer place_order
             CMD
 
@@ -133,7 +133,7 @@ EOF
         end
 
         it "generates an organizer with interactors" do
-          run_simple <<-CMD
+          run_command_and_stop <<-CMD
             bundle exec rails generate interactor:organizer place_order \
               charge_card fulfill_order
             CMD
@@ -150,14 +150,14 @@ EOF
         end
 
         it "requires a name" do
-          run_simple "bundle exec rails generate interactor:organizer"
+          run_command_and_stop "bundle exec rails generate interactor:organizer"
 
           expect("app/interactors/place_order.rb").not_to be_an_existing_file
           expect(last_command_started.stdout).to include("rails generate interactor:organizer NAME")
         end
 
         it "handles namespacing" do
-          run_simple "bundle exec rails generate interactor:organizer invoice/place_order"
+          run_command_and_stop "bundle exec rails generate interactor:organizer invoice/place_order"
 
           path = "app/interactors/invoice/place_order.rb"
           expect(path).to be_an_existing_file
@@ -185,15 +185,15 @@ EOF
     end
 
     it "auto-loads interactors" do
-      run_simple "bundle exec rails generate interactor place_order"
+      run_command_and_stop "bundle exec rails generate interactor place_order"
 
-      run_simple "bundle exec rails runner PlaceOrder"
+      run_command_and_stop "bundle exec rails runner PlaceOrder"
     end
 
     it "auto-loads organizers" do
-      run_simple "bundle exec rails generate interactor:organizer place_order"
+      run_command_and_stop "bundle exec rails generate interactor:organizer place_order"
 
-      run_simple "bundle exec rails runner PlaceOrder"
+      run_command_and_stop "bundle exec rails runner PlaceOrder"
     end
   end
 end
