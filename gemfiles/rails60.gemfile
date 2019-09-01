@@ -1,0 +1,11 @@
+source "https://rubygems.org"
+
+gemspec path: ".."
+
+gem "rails", "~> 6.0.0"
+
+group :test do
+  gem "aruba"
+  gem "codeclimate-test-reporter", "~> 1.0"
+  gem "rspec"
+end
