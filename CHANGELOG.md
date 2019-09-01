@@ -1,3 +1,8 @@
+## 2.2.0 / 2019-09-01
+
+* [ENHANCEMENT] Add support for Ruby 2.6
+* [ENHANCEMENT] Add support for Rails 6.0+
+
 ## 2.2.0 / 2018-04-23
 
 * [ENHANCEMENT] Add support for Ruby 2.5
