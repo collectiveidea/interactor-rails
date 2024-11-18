@@ -1,4 +1,4 @@
-## 2.3.0 / TBD
+## 2.3.0 / 2024-11-18
 
 * [ENHANCEMENT] Add support for test-unit
 * [ENHANCEMENT] Add support for Ruby 3.1+ and Rails 7.0+
