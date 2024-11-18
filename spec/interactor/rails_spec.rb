@@ -1,22 +1,18 @@
 module Interactor
   describe "Rails" do
-    def last_command_started
-      # Account for older versions of Aruba as required by Rails 3.0
-      Aruba::Api.method_defined?(:last_command_started) ? super : last_command
-    end
-
     before do
-      run_command_and_stop <<-CMD
+      run_command_and_stop <<~CMD
         bundle exec rails new example \
-          --skip-yarn \
-          --skip-gemfile \
           --skip-git \
           --skip-keeps \
           --skip-action-mailer \
-          --skip-active-record \
-          --skip-puma \
+          --skip-action-mailbox \
+          --skip-action-text \
           --skip-action-cable \
-          --skip-sprockets \
+          --skip-active-record \
+          --skip-active-job \
+          --skip-active-storage \
+          --skip-asset-pipeline \
           --skip-spring \
           --skip-listen \
           --skip-coffee \
@@ -28,12 +24,14 @@ module Interactor
           --skip-bundle \
           --skip-bootsnap \
           --quiet
-        CMD
+      CMD
+
       cd "example"
-      write_file "Gemfile", <<-EOF
+      write_file "Gemfile", <<~FILE
         gem "rails"
         gem "interactor-rails", path: "#{ROOT}"
-        EOF
+      FILE
+
       run_command_and_stop "bundle install"
     end
 
@@ -44,27 +42,27 @@ module Interactor
 
           path = "app/interactors/place_order.rb"
           expect(path).to be_an_existing_file
-          expect(path).to have_file_content(<<-EOF)
-class PlaceOrder
-  include Interactor
+          expect(path).to have_file_content(<<~FILE)
+            class PlaceOrder
+              include Interactor
 
-  def call
-    # TODO
-  end
-end
-EOF
+              def call
+                # TODO
+              end
+            end
+          FILE
 
-          path = 'spec/interactors/place_order_spec.rb'
+          path = "spec/interactors/place_order_spec.rb"
           expect(path).to be_an_existing_file
-          expect(path).to have_file_content(<<-EOF)
-require 'spec_helper'
+          expect(path).to have_file_content(<<~FILE)
+            require "spec_helper"
 
-RSpec.describe PlaceOrder, type: :interactor do
-  describe '.call' do
-    pending "add some examples to (or delete) \#{__FILE__}"
-  end
-end
-EOF
+            RSpec.describe PlaceOrder, type: :interactor do
+              describe '.call' do
+                pending "add some examples to (or delete) \#{__FILE__}"
+              end
+            end
+          FILE
         end
 
         it "requires a name" do
@@ -79,74 +77,74 @@ EOF
 
           path = "app/interactors/invoice/place_order.rb"
           expect(path).to be_an_existing_file
-          expect(path).to have_file_content(<<-EOF)
-class Invoice::PlaceOrder
-  include Interactor
+          expect(path).to have_file_content(<<~FILE)
+            class Invoice::PlaceOrder
+              include Interactor
 
-  def call
-    # TODO
-  end
-end
-EOF
+              def call
+                # TODO
+              end
+            end
+          FILE
 
           path = "spec/interactors/invoice/place_order_spec.rb"
           expect(path).to be_an_existing_file
-          expect(path).to have_file_content(<<-EOF)
-require 'spec_helper'
+          expect(path).to have_file_content(<<~FILE)
+            require "spec_helper"
 
-RSpec.describe Invoice::PlaceOrder, type: :interactor do
-  describe '.call' do
-    pending "add some examples to (or delete) \#{__FILE__}"
-  end
-end
-EOF
+            RSpec.describe Invoice::PlaceOrder, type: :interactor do
+              describe '.call' do
+                pending "add some examples to (or delete) \#{__FILE__}"
+              end
+            end
+          FILE
         end
       end
 
       context "interactor:organizer" do
         it "generates an organizer" do
-          run_command_and_stop <<-CMD
+          run_command_and_stop <<~CMD
             bundle exec rails generate interactor:organizer place_order
-            CMD
+          CMD
 
           path = "app/interactors/place_order.rb"
           expect(path).to be_an_existing_file
-          expect(path).to have_file_content(<<-EOF)
-class PlaceOrder
-  include Interactor::Organizer
+          expect(path).to have_file_content(<<~FILE)
+            class PlaceOrder
+              include Interactor::Organizer
 
-  # organize Interactor1, Interactor2
-end
-EOF
+              # organize Interactor1, Interactor2
+            end
+          FILE
 
           path = "spec/interactors/place_order_spec.rb"
           expect(path).to be_an_existing_file
-          expect(path).to have_file_content(<<-EOF)
-require 'spec_helper'
+          expect(path).to have_file_content(<<~FILE)
+            require "spec_helper"
 
-RSpec.describe PlaceOrder, type: :interactor do
-  describe '.call' do
-    pending "add some examples to (or delete) \#{__FILE__}"
-  end
-end
-EOF
+            RSpec.describe PlaceOrder, type: :interactor do
+              describe '.call' do
+                pending "add some examples to (or delete) \#{__FILE__}"
+              end
+            end
+          FILE
         end
 
         it "generates an organizer with interactors" do
-          run_command_and_stop <<-CMD
+          run_command_and_stop <<~CMD
             bundle exec rails generate interactor:organizer place_order \
               charge_card fulfill_order
-            CMD
+          CMD
 
           path = "app/interactors/place_order.rb"
           expect(path).to be_an_existing_file
-          expect(path).to have_file_content(<<-EOF)
-class PlaceOrder
-  include Interactor::Organizer
+          expect(path).to have_file_content(<<~FILE)
+            class PlaceOrder
+              include Interactor::Organizer
 
-  organize ChargeCard, FulfillOrder
-end
-EOF
+              organize ChargeCard, FulfillOrder
+            end
+          FILE
         end
 
         it "requires a name" do
@@ -161,38 +159,85 @@ EOF
 
           path = "app/interactors/invoice/place_order.rb"
           expect(path).to be_an_existing_file
-          expect(path).to have_file_content(<<-EOF)
-class Invoice::PlaceOrder
-  include Interactor::Organizer
+          expect(path).to have_file_content(<<~FILE)
+            class Invoice::PlaceOrder
+              include Interactor::Organizer
 
-  # organize Interactor1, Interactor2
-end
-EOF
+              # organize Interactor1, Interactor2
+            end
+          FILE
 
           path = "spec/interactors/invoice/place_order_spec.rb"
           expect(path).to be_an_existing_file
-          expect(path).to have_file_content(<<-EOF)
-require 'spec_helper'
+          expect(path).to have_file_content(<<~FILE)
+            require "spec_helper"
 
-RSpec.describe Invoice::PlaceOrder, type: :interactor do
-  describe '.call' do
-    pending "add some examples to (or delete) \#{__FILE__}"
-  end
-end
-EOF
+            RSpec.describe Invoice::PlaceOrder, type: :interactor do
+              describe '.call' do
+                pending "add some examples to (or delete) \#{__FILE__}"
+              end
+            end
+          FILE
         end
       end
+
+      it "prefers rails_helper if available" do
+        write_file "spec/rails_helper.rb", <<~FILE
+          require "spec_helper"
+        FILE
+
+        run_command_and_stop "bundle exec rails generate interactor place_order"
+
+        path = "spec/interactors/place_order_spec.rb"
+        expect(path).to be_an_existing_file
+        expect(path).to have_file_content(<<~FILE)
+          require "rails_helper"
+
+          RSpec.describe PlaceOrder, type: :interactor do
+            describe '.call' do
+              pending "add some examples to (or delete) \#{__FILE__}"
+            end
+          end
+        FILE
+      ensure
+        remove("spec/rails_helper.rb")
+      end
+    end
+
+    it "support test unit instead of rspec" do
+      # Enable test-unit support since it is skipped while generating the app.
+      write_file "config/initializers/test_unit.rb", <<~FILE
+        require "rails/test_unit/railtie"
+      FILE
+
+      run_command_and_stop "bundle exec rails generate interactor invoice/place_order"
+
+      path = "spec/interactors/invoice/place_order_spec.rb"
+      expect(path).not_to be_an_existing_file
+
+      path = "test/interactors/invoice/place_order_test.rb"
+      expect(path).to be_an_existing_file
+
+      expect(path).to have_file_content(<<~FILE)
+        require "test_helper"
+
+        class Invoice::PlaceOrderTest < ActiveSupport::TestCase
+          # test "the truth" do
+          #   assert true
+          # end
+        end
+      FILE
+    ensure
+      remove("config/initializers/test_unit.rb")
     end
 
     it "auto-loads interactors" do
       run_command_and_stop "bundle exec rails generate interactor place_order"
-
       run_command_and_stop "bundle exec rails runner PlaceOrder"
     end
 
     it "auto-loads organizers" do
       run_command_and_stop "bundle exec rails generate interactor:organizer place_order"
-
       run_command_and_stop "bundle exec rails runner PlaceOrder"
     end
   end

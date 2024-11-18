@@ -1,7 +1,7 @@
 # Interactor Rails
 
 [![Gem](https://img.shields.io/gem/v/interactor-rails.svg?style=flat-square)](http://rubygems.org/gems/interactor-rails)
-[![Build](https://img.shields.io/travis/collectiveidea/interactor-rails/master.svg?style=flat-square)](https://travis-ci.org/collectiveidea/interactor-rails)
+[![Build](https://github.com/collectiveidea/interactor-rails/actions/workflows/tests.yml/badge.svg)](https://github.com/collectiveidea/interactor-rails/actions/workflows/tests.yml)
 [![Coverage](https://img.shields.io/codeclimate/coverage-letter/collectiveidea/interactor-rails.svg?style=flat-square)](https://codeclimate.com/github/collectiveidea/interactor-rails)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/collectiveidea/interactor-rails.svg?style=flat-square)](https://codeclimate.com/github/collectiveidea/interactor-rails)
 
@@ -16,8 +16,8 @@ Add this line to your application's Gemfile:
 gem "interactor-rails", "~> 2.0"
 ```
 
-Interactor Rails is compatible with Ruby 2.3, 2.4, or 2.5 on Rails 4.2, 5.0,
-5.1, 5.2 or 6.0.
+Interactor Rails is tested against Ruby 3.1 and newer on Rails 7.0 or newer.
+For older versions of Ruby and Rails use version 2.2.1.
 
 ## Usage
 
