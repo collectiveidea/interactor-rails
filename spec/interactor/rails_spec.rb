@@ -60,7 +60,7 @@ module Interactor
           path = "spec/interactors/place_order_spec.rb"
           expect(path).to be_an_existing_file
           expect(path).to have_file_content(<<~FILE)
-            require 'spec_helper'
+            require "spec_helper"
 
             RSpec.describe PlaceOrder, type: :interactor do
               describe '.call' do
@@ -95,7 +95,7 @@ module Interactor
           path = "spec/interactors/invoice/place_order_spec.rb"
           expect(path).to be_an_existing_file
           expect(path).to have_file_content(<<~FILE)
-            require 'spec_helper'
+            require "spec_helper"
 
             RSpec.describe Invoice::PlaceOrder, type: :interactor do
               describe '.call' do
@@ -125,7 +125,7 @@ module Interactor
           path = "spec/interactors/place_order_spec.rb"
           expect(path).to be_an_existing_file
           expect(path).to have_file_content(<<~FILE)
-            require 'spec_helper'
+            require "spec_helper"
 
             RSpec.describe PlaceOrder, type: :interactor do
               describe '.call' do
@@ -175,7 +175,7 @@ module Interactor
           path = "spec/interactors/invoice/place_order_spec.rb"
           expect(path).to be_an_existing_file
           expect(path).to have_file_content(<<~FILE)
-            require 'spec_helper'
+            require "spec_helper"
 
             RSpec.describe Invoice::PlaceOrder, type: :interactor do
               describe '.call' do
@@ -184,6 +184,26 @@ module Interactor
             end
           FILE
         end
+      end
+
+      it "prefers rails_helper if available" do
+        write_file "spec/rails_helper.rb", <<~FILE
+          require "spec_helper"
+        FILE
+
+        run_command_and_stop "bundle exec rails generate interactor place_order"
+
+        path = "spec/interactors/place_order_spec.rb"
+        expect(path).to be_an_existing_file
+        expect(path).to have_file_content(<<~FILE)
+          require "rails_helper"
+
+          RSpec.describe PlaceOrder, type: :interactor do
+            describe '.call' do
+              pending "add some examples to (or delete) \#{__FILE__}"
+            end
+          end
+        FILE
       end
     end
 
