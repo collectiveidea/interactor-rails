@@ -1,10 +1,5 @@
 module Interactor
   describe "Rails" do
-    def last_command_started
-      # Account for older versions of Aruba as required by Rails 3.0
-      Aruba::Api.method_defined?(:last_command_started) ? super : last_command
-    end
-
     before do
       run_command_and_stop <<~CMD
         bundle exec rails new example \
