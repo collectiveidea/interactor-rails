@@ -23,6 +23,11 @@ jobs:
           - "rails72"
           - "rails80"
           - "rails-master"
+        exclude:
+          - ruby_version: "3.1"
+            gemfile: "rails80"
+          - ruby_version: "3.1"
+            gemfile: "rails-master"
 
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
