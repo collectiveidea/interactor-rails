@@ -1,5 +1,6 @@
 ## 2.3.0 / TBD
 
+* [ENHANCEMENT] Add support for test-unit
 * [ENHANCEMENT] Add support for Ruby 3.1+ and Rails 7.0+
 * [ENHANCEMENT] Drop support for EOL Ruby and Rails versions
 * [ENHANCEMENT] Change depdency from all of Rails to just railties

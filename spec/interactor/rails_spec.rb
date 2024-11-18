@@ -204,7 +204,36 @@ module Interactor
             end
           end
         FILE
+      ensure
+        remove("spec/rails_helper.rb")
       end
+    end
+
+    it "support test unit instead of rspec" do
+      # Enable test-unit support since it is skipped while generating the app.
+      write_file "config/initializers/test_unit.rb", <<~FILE
+        require "rails/test_unit/railtie"
+      FILE
+
+      run_command_and_stop "bundle exec rails generate interactor invoice/place_order"
+
+      path = "spec/interactors/invoice/place_order_spec.rb"
+      expect(path).not_to be_an_existing_file
+
+      path = "test/interactors/invoice/place_order_test.rb"
+      expect(path).to be_an_existing_file
+
+      expect(path).to have_file_content(<<~FILE)
+        require "test_helper"
+
+        class Invoice::PlaceOrderTest < ActiveSupport::TestCase
+          # test "the truth" do
+          #   assert true
+          # end
+        end
+      FILE
+    ensure
+      remove("config/initializers/test_unit.rb")
     end
 
     it "auto-loads interactors" do
