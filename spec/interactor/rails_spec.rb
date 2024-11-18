@@ -8,15 +8,16 @@ module Interactor
     before do
       run_command_and_stop <<~CMD
         bundle exec rails new example \
-          --skip-yarn \
-          --skip-gemfile \
           --skip-git \
           --skip-keeps \
           --skip-action-mailer \
-          --skip-active-record \
-          --skip-puma \
+          --skip-action-mailbox \
+          --skip-action-text \
           --skip-action-cable \
-          --skip-sprockets \
+          --skip-active-record \
+          --skip-active-job \
+          --skip-active-storage \
+          --skip-asset-pipeline \
           --skip-spring \
           --skip-listen \
           --skip-coffee \
