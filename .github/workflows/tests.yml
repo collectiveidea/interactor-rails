@@ -16,18 +16,17 @@ jobs:
           - "3.1"
           - "3.2"
           - "3.3"
-          - "head"
         gemfile:
           - "rails70"
           - "rails71"
           - "rails72"
           - "rails80"
-          - "rails-master"
         exclude:
           - ruby_version: "3.1"
             gemfile: "rails80"
-          - ruby_version: "3.1"
-            gemfile: "rails-master"
+        include:
+          - ruby_version: "head"
+            gemfile: "rails-main"
 
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
