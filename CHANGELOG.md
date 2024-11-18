@@ -5,6 +5,7 @@
 * [ENHANCEMENT] Drop support for EOL Ruby and Rails versions
 * [ENHANCEMENT] Change depdency from all of Rails to just railties
 * [ENHANCEMENT] Prefer spec/rails_helper.rb when available
+* [ENHANCEMENT] Use double quotes in templates
 
 ## 2.2.0 / 2019-09-01
 

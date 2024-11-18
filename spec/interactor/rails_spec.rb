@@ -58,7 +58,7 @@ module Interactor
             require "spec_helper"
 
             RSpec.describe PlaceOrder, type: :interactor do
-              describe '.call' do
+              describe ".call" do
                 pending "add some examples to (or delete) \#{__FILE__}"
               end
             end
@@ -93,7 +93,7 @@ module Interactor
             require "spec_helper"
 
             RSpec.describe Invoice::PlaceOrder, type: :interactor do
-              describe '.call' do
+              describe ".call" do
                 pending "add some examples to (or delete) \#{__FILE__}"
               end
             end
@@ -123,7 +123,7 @@ module Interactor
             require "spec_helper"
 
             RSpec.describe PlaceOrder, type: :interactor do
-              describe '.call' do
+              describe ".call" do
                 pending "add some examples to (or delete) \#{__FILE__}"
               end
             end
@@ -173,7 +173,7 @@ module Interactor
             require "spec_helper"
 
             RSpec.describe Invoice::PlaceOrder, type: :interactor do
-              describe '.call' do
+              describe ".call" do
                 pending "add some examples to (or delete) \#{__FILE__}"
               end
             end
@@ -194,7 +194,7 @@ module Interactor
           require "rails_helper"
 
           RSpec.describe PlaceOrder, type: :interactor do
-            describe '.call' do
+            describe ".call" do
               pending "add some examples to (or delete) \#{__FILE__}"
             end
           end
